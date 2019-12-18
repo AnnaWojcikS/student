@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Student directory</title>
+</head>
+<body>
+<div class="container">
+<h3>Student directory</h3>
+<hr>
+
+    <!--  add a search box -->
+    <form action="#" th:action="@{/students/list/search}" method="GET">
+        Search student: <input type="text" name="searchName" />
+
+        <input type="submit" value="Search" class="btn btn-primary btn-sm mb-3" />
+    </form>
+
+    <a th:href="@{/students/showForm}" class="btn btn-primary btn-sm mb-3">
+    Add Student
+    </a>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th>Id
+            <a th:href="@{/students/list/sort/id}"  class="btn btn-danger btn-sm">
+                <i class="fas fa-sort-alpha-down"></i></a>
+        </th>
+        <th>First Name
+            <a th:href="@{/students/list/sort/firstName}"  class="btn btn-danger btn-sm">
+                <i class="fas fa-sort-alpha-down"></i></a>
+        </th>
+        <th>Second Name
+            <a th:href="@{/students/list/sort/secondName}"  class="btn btn-danger btn-sm">
+                <i class="fas fa-sort-alpha-down"></i></a>
+        </th>
+        <th>Last Name
+            <a th:href="@{/students/list/sort/lastName}"  class="btn btn-danger btn-sm">
+            <i class="fas fa-sort-alpha-down"></i></a>
+        </th>
+        <th>PESEL
+            <a th:href="@{/students/list/sort/pesel}"  class="btn btn-danger btn-sm">
+                <i class="fas fa-sort-alpha-down"></i></a>
+        </th>
+        <th>Date of Birth
+            <a th:href="@{/students/list/sort/dateOfBirth}"  class="btn btn-danger btn-sm">
+                <i class="fas fa-sort-alpha-down"></i></a>
+        </th>
+        <th>Address</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="tempStudent : ${students}">
+        <td th:text="${tempStudent.id}"></td>
+        <td th:text="${tempStudent.firstName}"></td>
+        <td th:text="${tempStudent.secondName}"></td>
+        <td th:text="${tempStudent.lastName}"></td>
+        <td th:text="${tempStudent.pesel}"></td>
+        <td th:text="${tempStudent.dateOfBirth}"></td>
+
+        <td><a href="#" th:href="@{/students/addresses(studentId=${tempStudent.id})}"
+                   class="btn btn-info btn-sm">Address</a>
+            <a th:href="@{/showAddressForm(studentId=${tempStudent.id})}" class="btn btn-primary btn-sm mb-3">
+                Add Address
+            </a>
+
+        </td>
+        <td>
+            <a th:href="@{/students/showFormForUpdate(studentId=${tempStudent.id})}"
+            class="btn btn-info btn-sm">
+                Update
+            </a>
+            <a th:href="@{/students/delete(studentId=${tempStudent.id})}"
+               class="btn btn-danger btn-sm"
+            onclick="if(!(confirm('Are you sure want to delete this student?'))) return false">
+                Delete
+            </a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</div>
+<script src="https://kit.fontawesome.com/ce30c0bd75.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Address directory</title>
+</head>
+<body>
+<div class="container">
+    <h3>Address directory</h3>
+    <hr>
+
+    <p>Student: <span th:text="${student.id}"/></p>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Zip Code</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="tempAddress : ${addresses}">
+            <td th:text="${tempAddress.id}"></td>
+            <td th:text="${tempAddress.street}"></td>
+            <td th:text="${tempAddress.city}"></td>
+            <td th:text="${tempAddress.zipCode}"></td>
+            <td>
+                <a th:href="@{/students/addresses/update(addressId=${tempAddress.id})}"
+                   class="btn btn-info btn-sm">
+                    Update
+                </a>
+                <a th:href="@{/students/addresses/delete(addressId=${tempAddress.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="if(!(confirm('Are you sure want to delete this student?'))) return false">
+                    Delete
+                </a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

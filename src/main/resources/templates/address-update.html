@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Save Address</title>
+</head>
+<body>
+<div class="container">
+    <h3>Address Directory</h3>
+    <hr>
+    <p class="h4 mb-4">Add Address</p>
+
+    <form action="#" th:action="@{/addresses/save}" th:object="${address} "method="POST">
+
+        <input type="hidden" th:field="*{id}" />
+        <input type="text" th:field="*{street}" class="form-control mb-4 col-4" placeholder="Street">
+        <input type="text" th:field="*{city}" class="form-control mb-4 col-4" placeholder="City">
+        <input type="text" th:field="*{zipCode}" class="form-control mb-4 col-4" placeholder="Zip Code">
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+
+    <hr>
+    <a th:href="@{/students/list}">Back to Students List</a>
+
+</div>
+
+</body>
+</html>
