@@ -19,6 +19,7 @@
             <th>Street</th>
             <th>City</th>
             <th>Zip Code</th>
+            <th>Address Type</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -29,6 +30,7 @@
             <td th:text="${tempAddress.street}"></td>
             <td th:text="${tempAddress.city}"></td>
             <td th:text="${tempAddress.zipCode}"></td>
+            <td th:text="${tempAddress.addressType}"></td>
             <td>
                 <a th:href="@{/students/addresses/update(addressId=${tempAddress.id})}"
                    class="btn btn-info btn-sm">

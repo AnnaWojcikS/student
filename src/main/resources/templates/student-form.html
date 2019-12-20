@@ -24,6 +24,13 @@
         <input type="text" th:field="*{addresses[0].street}" class="form-control mb-4 col-4" placeholder="Street">
         <input type="text" th:field="*{addresses[0].city}" class="form-control mb-4 col-4" placeholder="City">
         <input type="text" th:field="*{addresses[0].zipCode}" class="form-control mb-4 col-4" placeholder="Zip Code">
+        <label>Address Type</label>
+        <select th:field="*{addresses[0].addressType}" class="form-control mb-4 col-4">
+            <option th:each="type: ${AddressTypes}"
+            th:value="${type}"
+            th:text="${type.getDescription()}">
+                val</option>
+        </select>
         <button type="submit" class="btn btn-info col-2">Save</button>
     </form>
 

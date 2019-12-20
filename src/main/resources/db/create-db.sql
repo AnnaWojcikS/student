@@ -26,7 +26,7 @@ CREATE TABLE `address` (
   `street` varchar(45) DEFAULT NULL,
   `city` varchar(45) DEFAULT NULL,
   `zip_code` varchar(45) DEFAULT NULL,
-  `address_type` varchar(45) DEFAULT NULL,
+  `address_type` ENUM ('ZAMIESZKANIA','ZAMELDOWANIA','KORESPONDENCYJNY', 'INNY'),
   
   
   PRIMARY KEY (`id`)

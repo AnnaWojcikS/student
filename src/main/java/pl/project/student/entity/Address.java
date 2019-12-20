@@ -36,6 +36,10 @@ public class Address {
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private Student student;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "address_type")
+    private AddressType addressType;
+
     public boolean isNew() {
         return this.id == null;
     }

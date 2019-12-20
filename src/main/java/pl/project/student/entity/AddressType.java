@@ -1,23 +1,25 @@
 package pl.project.student.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by A.Wójcik on 09.12.2019.
  */
 public enum AddressType {
-    ZAMIESZK("Zamieszkania"),
-    ZAMELD("Zameldowania"),
-    KORESP("Korespondencyjny"),
+    ZAMIESZKANIA("Zamieszkania"),
+    ZAMELDOWANIA("Zameldowania"),
+    KORESPONDENCYJNY("Korespondencyjny"),
     INNY("Inny");
+
 
     @Getter
     @Setter
-    String description;
+    public String description;
+
 
     AddressType(String description) {
         this.description = description;

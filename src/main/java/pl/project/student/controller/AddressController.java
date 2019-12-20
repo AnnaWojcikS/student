@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import pl.project.student.dao.AddressRepository;
 import pl.project.student.dao.StudentRepository;
 import pl.project.student.entity.Address;
+import pl.project.student.entity.AddressType;
 import pl.project.student.entity.Student;
 import pl.project.student.service.AddressService;
 import pl.project.student.service.StudentService;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -43,6 +45,7 @@ public class AddressController {
         List<Address> addresses = student.getAddresses();
         Address address = new Address();
         addresses.add(address);
+
         model.addAttribute("student", student);
         model.addAttribute("addresses", addresses);
         model.addAttribute("address", address);

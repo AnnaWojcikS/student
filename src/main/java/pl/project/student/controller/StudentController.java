@@ -6,11 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.project.student.entity.Address;
+import pl.project.student.entity.AddressType;
 import pl.project.student.entity.Student;
 import pl.project.student.service.AddressService;
 import pl.project.student.service.StudentService;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -102,6 +104,7 @@ public class StudentController {
 
         model.addAttribute("student", student);
         model.addAttribute("address", address);
+        model.addAttribute("AddressTypes", Arrays.asList(AddressType.values()));
         return "student-form";
 
     }
@@ -110,6 +113,7 @@ public class StudentController {
     public String showFormForUpdate(@RequestParam("studentId") long id, Model model) {
         Student student = studentService.findById(id);
         model.addAttribute("student", student);
+        model.addAttribute("AddressTypes", Arrays.asList(AddressType.values()));
         return "student-form";
     }
 
