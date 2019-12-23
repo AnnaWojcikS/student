@@ -2,6 +2,7 @@ package pl.project.student.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.project.student.entity.Address;
 import pl.project.student.entity.Student;
 import pl.project.student.dao.StudentRepository;
 
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class StudentServiceImpl implements StudentService {
 
     private StudentRepository studentRepository;
+    private AddressService addressService;
 
     @Autowired
     public StudentServiceImpl(StudentRepository studentRepository) {
@@ -40,8 +42,21 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void save(Student student) {
+    public Student save(Student student) {
+       /* if(student != null) {
+            if(student.getAddresses() != null) {
+                student.getAddresses().forEach(address -> {
+                    if(address.getAddressType() == null) {
+                        throw new RuntimeException("Address Type is required.");
+                    } if (address.getId() == null) {
+                        Address newAddress = addressService.save(address);
+                        address.setId(newAddress.getId());
+                    }
+                });
+            }
+        }*/
         studentRepository.save(student);
+        return student;
     }
 
     @Override

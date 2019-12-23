@@ -14,7 +14,7 @@ public interface AddressService {
 
     public Address findById(long id);
 
-    public void save(Address address);
+    public Address save(Address address);
 
     public void deleteById(long id);
 

@@ -11,6 +11,7 @@ import pl.project.student.entity.Student;
 import pl.project.student.service.AddressService;
 import pl.project.student.service.StudentService;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -136,7 +137,7 @@ public class StudentController {
     }
 
     @PostMapping("/save")
-    public String saveStudent(@ModelAttribute("student") Student student) {
+    public String saveStudent(@Valid @ModelAttribute("student") Student student) {
 
         studentService.save(student);
 

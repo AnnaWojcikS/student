@@ -13,7 +13,7 @@ public interface StudentService {
 
     public Student findById(long id);
 
-    public void save(Student student);
+    public Student save(Student student);
 
     public void deleteById(long id);
 

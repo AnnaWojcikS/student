@@ -1,8 +1,10 @@
 package pl.project.student.entity;
 
 import lombok.*;
+import pl.project.student.validation.ZipCodeConstraint;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 /**
  * Created by A.Wójcik on 09.12.2019.
@@ -21,12 +23,16 @@ public class Address {
     @Column(name = "id")
     private Long id;
 
+    @NotBlank(message = "Street is mandatory.")
     @Column(name = "street")
     private String street;
 
+    @NotBlank(message = "City is mandatory.")
     @Column(name = "city")
     private String city;
 
+    @NotBlank(message = "Zip Code is mandatory.")
+    @ZipCodeConstraint
     @Column(name = "zip_code")
     private String zipCode;
 

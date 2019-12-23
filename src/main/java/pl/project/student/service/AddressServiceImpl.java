@@ -41,9 +41,10 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public void save(Address address) {
+    public Address save(Address address) {
         addressRepository.save(address);
 
+        return address;
     }
 
     @Override
